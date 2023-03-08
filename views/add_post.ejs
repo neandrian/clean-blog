@@ -25,17 +25,18 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <form novalidate>
+          <form method="POST" action="/posts">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls">
                 <label>Post Title</label>
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Name"
-                  id="name"
+                  placeholder="Title"
+                  id="title"
+                  name="title"
                   required
-                  data-validation-required-message="Please enter your name."
+                  data-validation-required-message="Please enter title."
                 />
                 <p class="help-block text-danger"></p>
               </div>
@@ -46,10 +47,11 @@
                 <textarea
                   rows="5"
                   class="form-control"
-                  placeholder="Message"
-                  id="message"
+                  placeholder="Details"
+                  id="detail"
+                  name="detail"
                   required
-                  data-validation-required-message="Please enter a message."
+                  data-validation-required-message="Please enter post details."
                 ></textarea>
                 <p class="help-block text-danger"></p>
               </div>
@@ -61,7 +63,7 @@
               class="btn btn-primary"
               id="sendMessageButton"
             >
-              Send
+              Add Post
             </button>
           </form>
         </div>
