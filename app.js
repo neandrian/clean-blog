@@ -2,16 +2,30 @@ const express = require('express');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
 const methodOverride = require('method-override');
+require('dotenv').config();
+
 const pageController = require('./controllers/pageController');
 const postController = require('./controllers/postController');
 
 const app = express();
 
 //connect db
-mongoose.connect('mongodb://localhost:27017/cleanblog-test-db', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(`${process.env.MONGO_CONNECT}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('DB connect');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+// mongoose.connect('mongodb://localhost:27017/cleanblog-test-db', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 // Template engine
 app.set('view engine', 'ejs');
